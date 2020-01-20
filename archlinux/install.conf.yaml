@@ -1,0 +1,29 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+   /etc/systemd/system/reflector.service:
+     path: ~/.dotfiles/archlinux/systemd/system/reflector.service
+   /etc/systemd/system/reflector.timer:
+     path: ~/.dotfiles/archlinux/systemd/system/reflector.timer
+   /etc/dnsmasq.conf:
+     force: true
+     path: ~/.dotfiles/archlinux/etc/dnsmasq.conf
+   /etc/dnscrypt-proxy.conf:
+     force: true
+     path: ~/.dotfiles/archlinux/etc/dnscrypt-proxy.conf
+   /etc/X11/xorg.conf.d/90-monitor.conf:
+     path: ~/.dotfiles/archlinux/etc/X11/xorg.conf.d/90-monitor.conf
+   /etc/X11/xorg.conf.d/50-synaptics-t440s.conf:
+     path: ~/.dotfiles/archlinux/etc/X11/xorg.conf.d/50-synaptics-t440s.conf
+   ~/.ssh/config:
+     path: ~/.dotfiles/archlinux/home/ssh/config
+   ~/.gnupg/gpg-agent.conf:
+     path: ~/.dotfiles/archlinux/home/gnupg/gpg-agent.conf
+   ~/.gnupg/gpg.conf:
+     path: ~/.dotfiles/archlinux/home/gnupg/gpg.conf
+   ~/.gitconfig:
+     path: ~/.dotfiles/archlinux/home/gitconfig

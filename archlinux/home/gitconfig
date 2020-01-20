@@ -1,0 +1,24 @@
+[user]
+	name = Andreas Kruger
+	email = ak@patientsky.com
+	signingkey = C904462C
+[push]
+	default = simple
+[github]
+	user = woopstar
+	token = 66f2801f8d70b5164be56458a73e4c207b9b1432
+[color]
+	ui = true
+[core]
+	editor = vim
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+[alias]
+	unadd = reset HEAD

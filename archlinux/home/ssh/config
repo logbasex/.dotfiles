@@ -1,0 +1,178 @@
+Host skynsm-osl1-01
+    Hostname 185.161.127.6
+    Port 34
+    LocalForward 9000 127.0.0.1:5601
+    LocalForward 8338 127.0.0.1:8338
+    LocalForward 1337 127.0.0.1:3000
+
+Host pumba
+    Hostname 91.102.91.18
+    # Hostname 2a02:9d0:3000:1::200
+    Port 45461
+    ForwardAgent yes
+
+Host con-osl1-01
+    Hostname 194.19.95.102
+    Port 34
+
+Host con-osl1-02 185.60.163.11
+    Hostname 185.60.163.11
+    Port 34
+
+Host con-odn1-01
+    Hostname 213.150.61.173
+    Port 34
+
+Host skyvpn-osl1-01
+    Hostname 10.100.30.20
+#    ProxyCommand ssh -q -a -x con-osl1-02 -W %h:%p
+
+Host skyvpn-osl1-02
+    Hostname 10.100.30.21
+#    ProxyCommand ssh -q -a -x con-osl1-02 -W %h:%p
+
+Host skymx-osl1-01
+    Hostname 10.100.30.1
+#    ProxyCommand ssh -q -a -x con-osl1-02 -W %h:%p
+
+Host skymx-osl1-02
+    Hostname 10.100.30.2
+#    ProxyCommand ssh -q -a -x con-osl1-02 -W %h:%p
+
+Host skysw-osl1-01
+    Hostname 10.100.30.3
+#    ProxyCommand ssh -q -a -x con-osl1-02 -W %h:%p
+
+Host fw-osl1-01 194.19.95.98
+    Hostname 194.19.95.98
+    Port 34
+#    ProxyCommand ssh -q -a -x con-osl1-02 -W %h:%p
+
+Host fw-osl1-02 194.19.95.99
+    Hostname 194.19.95.99
+    Port 34
+#    ProxyCommand ssh -q -a -x con-osl1-02 -W %h:%p
+
+Host fw-osl1-03 185.60.163.5
+    User ak
+    Port 34
+    ForwardAgent yes
+    Hostname 10.100.22.2
+    ProxyCommand ssh -q -a -x osl1-jump-01 -W %h:%p
+
+Host fw-osl1-04 185.60.163.6
+    User ak
+    Port 34
+    ForwardAgent yes
+    Hostname 10.100.22.3
+    ProxyCommand ssh -q -a -x osl1-jump-01 -W %h:%p
+
+Host fw-odn1-01 213.150.61.171
+    Hostname 213.150.61.171
+    Port 34
+#    ProxyCommand ssh -q -a -x odn1-jump-01 -W %h:%p
+
+Host fw-odn1-02 213.150.61.172
+    Hostname 213.150.61.172
+    Port 34
+#    ProxyCommand ssh -q -a -x odn1-jump-01 -W %h:%p
+
+Host fw-odn1-03 185.60.160.5
+    User ak
+    Port 34
+    ForwardAgent yes
+    Hostname 10.50.22.2
+#    ProxyCommand ssh -q -a -x odn1-jump-01 -W %h:%p
+
+Host fw-odn1-04 185.60.160.6
+    User ak
+    Port 34
+    ForwardAgent yes
+    ControlMaster no
+    Hostname 10.50.22.3
+ #   ProxyCommand ssh -q -a -x odn1-jump-01 -W %h:%p
+
+Host odn1-jump-01 10.50.22.9
+    User ak
+    Port 34
+    ForwardAgent yes
+    Hostname 10.50.22.9
+
+Host osl1-jump-01 10.100.22.9
+    User ak
+    Port 34
+    ForwardAgent yes
+    Hostname 10.100.22.9
+
+Host cornerstone03
+    User hlk
+    Hostname 185.27.115.6
+    Port 2200
+    ForwardAgent yes
+    ForwardX11Trusted yes
+
+Host deployment-smartbox-odn1
+    Hostname 192.168.1.39
+    Port 34
+    User manager
+
+Host ring
+    Hostname patientsky01.ring.nlnog.net
+    User patientsky
+    ForwardAgent yes
+
+Host *.ring.nlnog.net
+    User patientsky
+    ForwardAgent yes
+
+Host vpn-osl1-01
+    Hostname 185.60.163.8
+    Port 34
+
+Host 10.50.20.*
+    User ak
+    HostkeyAlgorithms +ssh-dss
+
+Host 10.50.23.*
+    Port 34
+    ProxyCommand ssh -q -a -x 185.60.160.36 -W %h:%p
+    User manager
+
+Host 10.100.23.*
+    Port 34
+    ProxyCommand ssh -q -a -x 185.60.163.36 -W %h:%p
+    User manager
+
+Host 10.100.* 10.50.* 10.60.*
+    Port 34
+
+
+Host 185.161.124.* 185.161.125.* 185.161.126.* 185.161.127.* 185.211.52.* 185.211.53.* 185.211.54.* 185.211.55.* 185.213.248.* 185.213.249.* 185.213.250.* 185.213.251.*
+    User manager
+    Port 34
+#    ProxyCommand ssh -q -a -x osl1-jump-01 -W %h:%p
+
+Host 185.60.163.*
+    User ak
+    Port 34
+#    ProxyCommand ssh -q -a -x osl1-jump-01 -W %h:%p
+
+Host 185.60.160.*
+    User ak
+    Port 34
+#    ProxyCommand ssh -q -a -x odn1-jump-01 -W %h:%p
+
+Host *.onion
+    ProxyCommand /etc/ssh/connect -S localhost:9050 %h %p
+
+Host *
+    UserKnownHostsFile /dev/null 
+    User ak
+    NoHostAuthenticationForLocalhost yes
+    HashKnownHosts yes
+    StrictHostKeyChecking no
+    ConnectTimeout 30
+    ServerAliveInterval 10
+    #KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+    #MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-ripemd160-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,umac-128@openssh.com
+    #Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
