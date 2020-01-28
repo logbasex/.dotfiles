@@ -2,6 +2,9 @@
     link:
       relink: true
 
+- create:
+    - /home/ak/.ssh
+
 - link:
    /etc/systemd/system/reflector.service:
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.service
@@ -20,8 +23,10 @@
    /home/ak/.ssh/config:
      path: /home/ak/.dotfiles/archlinux/home/ssh/config
      force: true
+     create: true
    /home/ak/.gnupg/gpg-agent.conf:
      path: /home/ak/.dotfiles/archlinux/home/gnupg/gpg-agent.conf
+     create: true
    /home/ak/.gnupg/gpg.conf:
      path: /home/ak/.dotfiles/archlinux/home/gnupg/gpg.conf
    /home/ak/.gitconfig:
@@ -30,5 +35,5 @@
      path: /home/ak/.dotfiles/archlinux/home/zshrc
    /home/ak/.zpreztorc:
      path: /home/ak/.dotfiles/archlinux/home/zpreztorc
-  /home/ak/.yubico:
+   /home/ak/.yubico:
      path: /home/ak/.dotfiles/archlinux/home/yubico
