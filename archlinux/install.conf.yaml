@@ -10,9 +10,9 @@
    /etc/dnsmasq.conf:
      force: true
      path: /home/ak/.dotfiles/archlinux/etc/dnsmasq.conf
-   /etc/dnscrypt-proxy.conf:
+   /etc/dnscrypt-proxy/dnscrypt-proxy.toml:
      force: true
-     path: /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.conf
+     path: /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml
    /etc/X11/xorg.conf.d/90-monitor.conf:
      path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/90-monitor.conf
    /etc/X11/xorg.conf.d/50-synaptics-t440s.conf:
