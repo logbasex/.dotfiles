@@ -15,7 +15,7 @@ cd ~
 
 chsh -s $(which zsh)
 yay -S google-chrome spotify visual-studio-code-bin teamviewer slack-desktop dropbox polybar dolphin redshift vlc spectacle kwalletmanager kinfocenter ark thunderbird terminator latte-dock grc-solarized zsh-theme-powerlevel10k-git prezto-git yubico-pam
-yay -S openvpn networkmanager-openvpn plasma-pa pulseaudio bluez bluez-utils throttled cryfs dnscrypt-proxy dnsmasq sudo zsh wget powertop tlp konsole python python-pip openssh
+yay -S openvpn networkmanager-openvpn plasma-pa pulseaudio bluez bluez-utils throttled cryfs dnscrypt-proxy dnsmasq sudo zsh wget powertop tlp konsole python python-pip openssh dnsutils
 yay -S papirus-icon-theme-kde
 yay -S ttf-dejavu ttf-liberation
 yay -Yc
