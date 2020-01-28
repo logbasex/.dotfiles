@@ -40,7 +40,7 @@
 
 - shell:
   - cp /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
-  - chmod 0550 /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+  - chmod 0444 /etc/dnscrypt-proxy/dnscrypt-proxy.toml
 
 #    /etc/dnscrypt-proxy/dnscrypt-proxy.toml:
 #     force: true
