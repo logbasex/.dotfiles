@@ -20,7 +20,7 @@ yay -S papirus-icon-theme-kde
 yay -S ttf-dejavu ttf-liberation
 yay -Yc
 
-pip install dotbot
+sudo pip install dotbot
 dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
 
 systemctl enable lenovo_fix.service tlp dnscrypt-proxy dnsmasq

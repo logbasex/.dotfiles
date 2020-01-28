@@ -19,6 +19,7 @@
      path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/50-synaptics-t440s.conf
    /home/ak/.ssh/config:
      path: /home/ak/.dotfiles/archlinux/home/ssh/config
+     force: true
    /home/ak/.gnupg/gpg-agent.conf:
      path: /home/ak/.dotfiles/archlinux/home/gnupg/gpg-agent.conf
    /home/ak/.gnupg/gpg.conf:
@@ -29,3 +30,5 @@
      path: /home/ak/.dotfiles/archlinux/home/zshrc
    /home/ak/.zpreztorc:
      path: /home/ak/.dotfiles/archlinux/home/zpreztorc
+  /home/ak/.yubico:
+     path: /home/ak/.dotfiles/archlinux/home/yubico

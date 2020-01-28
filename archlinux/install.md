@@ -281,22 +281,19 @@ $ iw dev wlan0 set power_save off
 $ wifi-menu
 ```
 
+## Finalize setup
 Log in as root, and not as a user, and setup Plasma.
 Setup reflector again and install required packages.
 
 ```
 $ reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 $ pacman -Sy plasma-desktop sddm networkmanager plasma-nm fwupd intel-ucode xf86-video-intel git openssh terminator
-```
-
-## Finalize setup
-```
 $ systemctl enable sddm NetworkManager
 $ pacman -R netctl dhcpcd
 $ reboot
 ```
 
-Log in to sddm's GUI as your user
+Log in to sddm's GUI as your user.
 Complete the setup , by opening the Terminator shell and do:
 
 ```
