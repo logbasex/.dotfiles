@@ -2,10 +2,13 @@
 cd ~
 git clone https://aur.archlinux.org/yay.git
 git clone https://github.com/kwin-scripts/kwin-tiling.git
-git clone https://github.com/woopstar/dotfiles ~/.dotfiles
-cd yay
-makepkg -si
-cd ~
+
+if [ ! $(which yay) ]; then
+    cd yay
+    makepkg -si
+    cd ~
+fi
+
 cd kwin-tiling/
 plasmapkg2 --type kwinscript -i .
 cd ~
