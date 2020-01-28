@@ -5,6 +5,9 @@
 - clean: ['~']
 
 - link:
-   /usr/local/etc/dnscrypt-proxy.toml: 
+   /usr/local/etc/dnscrypt-proxy.toml:
      force: true
-     path: ~/.dotfiles/macbook/etc/dnscrypt-proxy.toml 
+     path: ~/.dotfiles/macbook/etc/dnscrypt-proxy.toml
+   /usr/local/etc/dnsmasq.conf:
+     force: true
+     path: ~/.dotfiles/macbook/etc/dnsmasq.conf

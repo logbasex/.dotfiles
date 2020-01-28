@@ -1,0 +1,66 @@
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+export LC_ALL=da_DK.UTF-8
+export LANG=da_DK.UTF-8
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
+export EDITOR="vim"
+alias fuckgpg="gpg-connect-agent killagent /bye; gpg-connect-agent /bye"
+alias review='function _review(){ current_branch=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`; git fetch origin pull/$1/head; git checkout FETCH_HEAD; git show;git checkout $current_branch };_review'
+
+curl_debug() {
+    curl -w '\n{"contentType":"%{content_type}","filenameEffective":"%{filename_effective}","ftpEntryPath":"%{ftp_entry_path}","httpCode":"%{http_code}","httpConnect":"%{http_connect}","httpVersion":"%{http_version}","localIp":"%{local_ip}","localPort":"%{local_port}","numConnects":"%{num_connects}","numRedirects":"%{num_redirects}","proxySslVerifyResult":"%{proxy_ssl_verify_result}","redirectUrl":"%{redirect_url}","remoteIp":"%{remote_ip}","remotePort":"%{remote_port}","scheme":"%{scheme}","size":{"download":"%{size_download}","header":"%{size_header}","request":"%{size_request}","upload":"%{size_upload}"},"speed":{"download":"%{speed_download}","upload":"%{speed_upload}"},"sslVerifyResult":"%{ssl_verify_result}","time":{"appconnect":"%{time_appconnect}","connect":"%{time_connect}","namelookup":"%{time_namelookup}","pretransfer":"%{time_pretransfer}","redirect":"%{time_redirect}","starttransfer":"%{time_starttransfer}","total":"%{time_total}"},"urlEffective":"%{url_effective}"}' "$@"
+}
+
+curl_time() {
+    curl -w "\n
+   namelookup:  %{time_namelookup}s\n\
+      connect:  %{time_connect}s\n\
+   appconnect:  %{time_appconnect}s\n\
+  pretransfer:  %{time_pretransfer}s\n\
+     redirect:  %{time_redirect}s\n\
+starttransfer:  %{time_starttransfer}s\n\
+-------------------------\n\
+        total:  %{time_total}s\n" "$@"
+}
+
+# POWERLEVEL9K
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+
+#Disable autocorrect
+unsetopt correct_all
+unsetopt correct
+DISABLE_CORRECTION="true"
+
+# Colourise commands
+if command grc &>/dev/null; then
+  alias grc="grc -es --colour=auto"
+  alias df='grc df'
+  alias diff='grc diff'
+  alias docker='grc docker'
+  alias du='grc du'
+  alias env='grc env'
+  alias make='grc make'
+  alias gcc='grc gcc'
+  alias g++='grc g++'
+  alias id='grc id'
+  alias lsof='grc lsof'
+  alias netstat='grc netstat'
+  alias ping='grc ping'
+  alias ping6='grc ping6'
+  alias traceroute='grc traceroute'
+  alias traceroute6='grc traceroute6'
+  alias head='grc head'
+  alias tail='grc tail'
+  alias dig='grc dig'
+  alias mount='grc mount'
+  alias ps='grc ps'
+  alias ifconfig='grc ifconfig'
+fi
+alias ls="ls -G"
+alias vi="vim"
+alias dir="ls"

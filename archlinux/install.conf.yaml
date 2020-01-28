@@ -27,3 +27,7 @@
      path: ~/.dotfiles/archlinux/home/gnupg/gpg.conf
    ~/.gitconfig:
      path: ~/.dotfiles/archlinux/home/gitconfig
+   ~/.zshrc:
+     path: ~/.dotfiles/archlinux/home/zshrc
+   ~/.zpreztorc:
+     path: ~/.dotfiles/archlinux/home/zpreztorc

@@ -34,11 +34,9 @@
 ## Example with both IPv4 and IPv6:
 ## listen_addresses = ['127.0.0.1:53', '[::1]:53']
 
-#listen_addresses = ['127.0.0.1:53']
 listen_addresses = ['127.0.0.1:5355', '[::1]:5355']
 
 ## Maximum number of simultaneous client connections to accept
-
 max_clients = 250
 
 
@@ -124,7 +122,6 @@ keepalive = 30
 
 
 ## Load-balancing strategy: 'p2' (default), 'ph', 'first' or 'random'
-
 lb_strategy = 'p2'
 
 ## Set to `true` to constantly try to estimate the latency of all the resolvers
