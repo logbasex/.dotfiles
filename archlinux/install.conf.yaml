@@ -2,32 +2,30 @@
     link:
       relink: true
 
-- clean: ['~']
-
 - link:
    /etc/systemd/system/reflector.service:
-     path: ~/.dotfiles/archlinux/systemd/system/reflector.service
+     path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.service
    /etc/systemd/system/reflector.timer:
-     path: ~/.dotfiles/archlinux/systemd/system/reflector.timer
+     path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.timer
    /etc/dnsmasq.conf:
      force: true
-     path: ~/.dotfiles/archlinux/etc/dnsmasq.conf
+     path: /home/ak/.dotfiles/archlinux/etc/dnsmasq.conf
    /etc/dnscrypt-proxy.conf:
      force: true
-     path: ~/.dotfiles/archlinux/etc/dnscrypt-proxy.conf
+     path: /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.conf
    /etc/X11/xorg.conf.d/90-monitor.conf:
-     path: ~/.dotfiles/archlinux/etc/X11/xorg.conf.d/90-monitor.conf
+     path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/90-monitor.conf
    /etc/X11/xorg.conf.d/50-synaptics-t440s.conf:
-     path: ~/.dotfiles/archlinux/etc/X11/xorg.conf.d/50-synaptics-t440s.conf
-   ~/.ssh/config:
-     path: ~/.dotfiles/archlinux/home/ssh/config
-   ~/.gnupg/gpg-agent.conf:
-     path: ~/.dotfiles/archlinux/home/gnupg/gpg-agent.conf
-   ~/.gnupg/gpg.conf:
-     path: ~/.dotfiles/archlinux/home/gnupg/gpg.conf
-   ~/.gitconfig:
-     path: ~/.dotfiles/archlinux/home/gitconfig
-   ~/.zshrc:
-     path: ~/.dotfiles/archlinux/home/zshrc
-   ~/.zpreztorc:
-     path: ~/.dotfiles/archlinux/home/zpreztorc
+     path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/50-synaptics-t440s.conf
+   /home/ak/.ssh/config:
+     path: /home/ak/.dotfiles/archlinux/home/ssh/config
+   /home/ak/.gnupg/gpg-agent.conf:
+     path: /home/ak/.dotfiles/archlinux/home/gnupg/gpg-agent.conf
+   /home/ak/.gnupg/gpg.conf:
+     path: /home/ak/.dotfiles/archlinux/home/gnupg/gpg.conf
+   /home/ak/.gitconfig:
+     path: /home/ak/.dotfiles/archlinux/home/gitconfig
+   /home/ak/.zshrc:
+     path: /home/ak/.dotfiles/archlinux/home/zshrc
+   /home/ak/.zpreztorc:
+     path: /home/ak/.dotfiles/archlinux/home/zpreztorc
