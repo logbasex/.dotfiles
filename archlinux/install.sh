@@ -16,10 +16,8 @@ if [ ! -d kwin-tiling ]; then
 fi
 
 yay -S --needed google-chrome spotify visual-studio-code-bin teamviewer slack-desktop dropbox polybar dolphin redshift vlc spectacle kwalletmanager kinfocenter ark thunderbird terminator latte-dock grc-solarized zsh-theme-powerlevel10k-git prezto-git yubico-pam
-yay -S --needed openvpn networkmanager-openvpn plasma-pa pulseaudio bluez bluez-utils throttled cryfs dnscrypt-proxy dnsmasq sudo zsh wget powertop tlp konsole python python-pip openssh dnsutils yubikey-full-disk-encryption libinput rts5227-dkms hunspell-da hunspel aspell-da aspell-en binutils fakeroot
-yay -S --needed papirus-icon-theme-kde
+yay -S --needed openvpn networkmanager-openvpn plasma-pa pulseaudio bluez bluez-utils throttled cryfs dnscrypt-proxy dnsmasq sudo zsh wget powertop tlp konsole python python-pip openssh dnsutils yubikey-full-disk-encryption libinput rts5227-dkms hunspell-da hunspell aspell-da aspell-en binutils fakeroot
 yay -S --needed ttf-dejavu ttf-liberation
-yay -Yc
 
 sudo pip install dotbot
 sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
@@ -34,7 +32,9 @@ if [ ! -d cryptboot ]; then
     cd cryptboot
     makepkg -si --skipchecksums
     cd ~
-    cryptboot-efikeys create
-    cryptboot-efikeys enroll
-    cryptboot update-grub
+    sudo cryptboot-efikeys create
+    sudo cryptboot-efikeys enroll
+    sudo cryptboot update-grub
 fi
+
+yay -Yc
