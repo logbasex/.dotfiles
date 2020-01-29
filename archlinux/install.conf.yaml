@@ -1,6 +1,7 @@
 - defaults:
     link:
       relink: true
+      create: true
 
 - create:
     - /home/ak/.ssh
@@ -21,10 +22,8 @@
    /home/ak/.ssh/config:
      path: /home/ak/.dotfiles/archlinux/home/ssh/config
      force: true
-     create: true
    /home/ak/.gnupg/gpg-agent.conf:
      path: /home/ak/.dotfiles/archlinux/home/gnupg/gpg-agent.conf
-     create: true
    /home/ak/.gnupg/gpg.conf:
      path: /home/ak/.dotfiles/archlinux/home/gnupg/gpg.conf
    /home/ak/.gitconfig:
