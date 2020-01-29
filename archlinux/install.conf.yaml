@@ -42,6 +42,9 @@
      path: /home/ak/.dotfiles/archlinux/etc/pacman.d/hooks/98-secureboot.hook
    /etc/pacman.d/hooks/99-initramfs-chmod.hook:
      path: /home/ak/.dotfiles/archlinux/etc/pacman.d/hooks/99-initramfs-chmod.hook
+   /etc/pam.d/system-auth:
+     path: /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth
+     force: true
 
 - shell:
   - cp /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
