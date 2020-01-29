@@ -13,9 +13,6 @@
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.service
    /etc/systemd/system/reflector.timer:
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.timer
-   /etc/resolv.conf:
-     force: true
-     path: /home/ak/.dotfiles/archlinux/etc/resolv.conf
    /etc/dnsmasq.conf:
      force: true
      path: /home/ak/.dotfiles/archlinux/etc/dnsmasq.conf
@@ -50,3 +47,4 @@
   - cp /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - chmod 0444 /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - chown 0600 /home/ak/.yubico
+  - chattr -i /etc/resolv.conf && ln -s /home/ak/.dotfiles/archlinux/etc/resolv.conf /etc/resolv.conf && chattr +i /etc/resolv.conf

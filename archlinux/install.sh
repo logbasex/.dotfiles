@@ -29,8 +29,6 @@ chsh -s /usr/bin/zsh
 sudo systemctl enable lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer
 sudo systemctl start lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer
 
-sudo chattr +i /etc/resolv.conf
-
 if [ ! -d cryptboot ]; then
     git clone https://github.com/xmikos/cryptboot.git
     cd cryptboot
