@@ -13,6 +13,9 @@
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.service
    /etc/systemd/system/reflector.timer:
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.timer
+   /etc/resolv.conf:
+     force: true
+     path: /home/ak/.dotfiles/archlinux/etc/resolv.conf
    /etc/dnsmasq.conf:
      force: true
      path: /home/ak/.dotfiles/archlinux/etc/dnsmasq.conf

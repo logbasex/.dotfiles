@@ -303,6 +303,8 @@ $ bash ~/.dotfiles/archlinux/install.sh
 
 # Post Installation
 
+https://support.yubico.com/support/solutions/articles/15000011355-ubuntu-linux-login-guide-challenge-response
+
 
 
 # References
