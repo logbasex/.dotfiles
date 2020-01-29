@@ -301,6 +301,10 @@ $ git clone https://github.com/woopstar/dotfiles ~/.dotfiles
 $ bash ~/.dotfiles/archlinux/install.sh
 ```
 
+# Post Installation
+
+
+
 # References
 https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS
 https://blog.stigok.com/2018/05/03/lvm-in-luks-with-encrypted-boot-partition-and-suspend-to-disk.html
