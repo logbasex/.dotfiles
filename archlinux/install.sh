@@ -15,17 +15,74 @@ if [ ! -d kwin-tiling ]; then
     cd ~
 fi
 
-yay -S --needed google-chrome spotify visual-studio-code-bin teamviewer slack-desktop dropbox polybar dolphin redshift vlc spectacle kwalletmanager kinfocenter ark thunderbird terminator latte-dock grc-solarized zsh-theme-powerlevel10k-git prezto-git yubico-pam
-yay -S --needed openvpn networkmanager-openvpn plasma-pa pulseaudio bluez bluez-utils throttled cryfs dnscrypt-proxy dnsmasq sudo zsh wget powertop tlp konsole python python-pip openssh dnsutils yubikey-full-disk-encryption libinput rts5227-dkms hunspell-da hunspell aspell-da aspell-en binutils fakeroot
-yay -S --needed ttf-dejavu ttf-liberation
+yay -S --needed \
+    google-chrome \
+    spotify \
+    visual-studio-code-bin  \
+    teamviewer  \
+    slack-desktop  \
+    dropbox  \
+    polybar  \
+    dolphin  \
+    redshift  \
+    vlc  \
+    spectacle  \
+    kwalletmanager  \
+    kinfocenter  \
+    ark  \
+    thunderbird \
+    terminator \
+    latte-dock \
+    grc-solarized \
+    zsh-theme-powerlevel10k-git \
+    prezto-git \
+    yubico-pam \
+    openvpn \
+    networkmanager-openvpn \
+    plasma-pa \
+    pulseaudio \
+    bluez \
+    bluez-utils \
+    throttled \
+    cryfs \
+    dnscrypt-proxy \
+    dnsmasq \
+    sudo \
+    zsh \
+    wget \
+    powertop \
+    tlp \
+    python \
+    python-pip \
+    dnsutils \
+    yubikey-full-disk-encryption \
+    libinput \
+    rts5227-dkms \
+    hunspell-da \
+    hunspell \
+    aspell-da \
+    aspell-en \
+    binutils \
+    fakeroot \
+    thermald \
+    lm_sensor \
+    kscreen \
+    plasma-vault \
+    plasma-thunderbolt \
+    powerdevil \
+    user-manager \
+    fwupd \
+    ttf-dejavu \
+    ttf-liberation
 
 sudo pip install dotbot
 sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
 
 chsh -s /usr/bin/zsh
+sudo sensors-detect
 
-sudo systemctl enable lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer
-sudo systemctl start lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer
+sudo systemctl enable lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
+sudo systemctl start lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
 
 #if [ ! -d cryptboot ]; then
 #    git clone https://github.com/xmikos/cryptboot.git

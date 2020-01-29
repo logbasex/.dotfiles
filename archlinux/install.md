@@ -278,7 +278,7 @@ Setup reflector again and install required packages.
 
 ```
 $ reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-$ pacman -Sy plasma-desktop sddm networkmanager plasma-nm fwupd intel-ucode xf86-video-intel git openssh terminator
+$ pacman -Sy plasma-desktop sddm networkmanager plasma-nm intel-ucode xf86-video-intel git openssh terminator
 $ systemctl enable sddm NetworkManager
 $ pacman -R netctl dhcpcd
 $ reboot

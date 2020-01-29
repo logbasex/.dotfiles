@@ -50,3 +50,4 @@
   - rm /etc/resolv.conf
   - ln -s /home/ak/.dotfiles/archlinux/etc/resolv.conf /etc/resolv.conf
   - chattr +i /home/ak/.dotfiles/archlinux/etc/resolv.conf
+  - chown -R ak.ak /home/ak/
