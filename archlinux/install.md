@@ -83,7 +83,7 @@ $ lvcreate -l 100%FREE luks -n root
 ```
 $ mkswap /dev/mapper/luks-swap
 $ mkfs.xfs /dev/mapper/luks-root
-$ mkfs.ext2 /dev/mapper/encrypted-boot
+$ mkfs.ext4 /dev/mapper/encrypted-boot
 ```
 
 ## Mount the new system
@@ -146,7 +146,7 @@ $ locale-gen
 
 ## Set keymap for console
 ```
-$ echo "KEYMAP=dk" > /etc/vconsole.conf
+$ echo "KEYMAP=dk-latin1" > /etc/vconsole.conf
 ```
 
 ## Set your root password
@@ -304,6 +304,7 @@ $ bash ~/.dotfiles/archlinux/install.sh
 # Post Installation
 
 https://support.yubico.com/support/solutions/articles/15000011355-ubuntu-linux-login-guide-challenge-response
+https://github.com/agherzan/yubikey-full-disk-encryption
 
 
 

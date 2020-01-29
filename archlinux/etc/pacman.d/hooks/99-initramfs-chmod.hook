@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = boot/vmlinuz-linux
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = Setting proper permissions for linux initcpios...
+When = PostTransaction
+Exec = /usr/bin/chmod 0400 /boot/initramfs-linux.img /boot/initramfs-linux-fallback.img
