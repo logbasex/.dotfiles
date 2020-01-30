@@ -23,7 +23,7 @@ if [ ! -d powerlevel10k ]; then
     git clone https://github.com/romkatv/powerlevel10k.git
 fi
 
-yay -S --needed \
+yay -S --needed --noconfirm \
     google-chrome \
     spotify \
     visual-studio-code-bin  \
@@ -90,7 +90,7 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
     chsh -s /usr/bin/zsh
 fi
 
-(while :; do echo ""; done ) | sudo sensors-detect
+sudo sensors-detect --auto
 
 sudo systemctl enable lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
 sudo systemctl start lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
