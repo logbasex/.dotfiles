@@ -71,7 +71,7 @@ yay -S --needed \
     binutils \
     fakeroot \
     thermald \
-    lm_sensor \
+    lm_sensors \
     kscreen \
     plasma-vault \
     plasma-thunderbolt \
