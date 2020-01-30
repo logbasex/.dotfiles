@@ -86,8 +86,11 @@ yay -S --needed \
 sudo pip install dotbot
 sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
 
-chsh -s /usr/bin/zsh
-sudo sensors-detect
+if [ "$SHELL" != "/usr/bin/zsh" ]; then
+    chsh -s /usr/bin/zsh
+fi
+
+(while :; do echo ""; done ) | sudo sensors-detect
 
 sudo systemctl enable lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
 sudo systemctl start lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
