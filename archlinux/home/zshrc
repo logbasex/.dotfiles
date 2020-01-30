@@ -3,6 +3,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+autoload -Uz compinit
+compinit
+source ~/gitstatus/gitstatus.plugin.zsh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
 # Customize to your needs...
 export LC_ALL=da_DK.UTF-8
 export LANG=da_DK.UTF-8
@@ -25,6 +30,10 @@ curl_time() {
 starttransfer:  %{time_starttransfer}s\n\
 -------------------------\n\
         total:  %{time_total}s\n" "$@"
+}
+
+genpasswd() {
+  tr -dc A-Za-z0-9 < /dev/urandom | head -c ${1:-20} | xargs
 }
 
 # POWERLEVEL9K

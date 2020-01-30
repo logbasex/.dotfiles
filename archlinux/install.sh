@@ -15,6 +15,14 @@ if [ ! -d kwin-tiling ]; then
     cd ~
 fi
 
+if [ ! -d gitstatus ]; then
+    git clone https://github.com/romkatv/gitstatus.git
+fi
+
+if [ ! -d powerlevel10k ]; then
+    git clone https://github.com/romkatv/powerlevel10k.git
+fi
+
 yay -S --needed \
     google-chrome \
     spotify \
@@ -34,8 +42,6 @@ yay -S --needed \
     terminator \
     latte-dock \
     grc-solarized \
-    zsh-theme-powerlevel10k-git \
-    prezto-git \
     yubico-pam \
     openvpn \
     networkmanager-openvpn \
@@ -73,7 +79,9 @@ yay -S --needed \
     user-manager \
     fwupd \
     ttf-dejavu \
-    ttf-liberation
+    ttf-liberation \
+    virtualbox \
+    virtualbox-ext-oracle
 
 sudo pip install dotbot
 sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
