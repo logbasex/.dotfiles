@@ -36,16 +36,15 @@
      path: /home/ak/.dotfiles/archlinux/etc/pacman.d/hooks/98-secureboot.hook
    /etc/pacman.d/hooks/99-initramfs-chmod.hook:
      path: /home/ak/.dotfiles/archlinux/etc/pacman.d/hooks/99-initramfs-chmod.hook
-   /etc/pam.d/system-auth:
-     path: /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth
-     force: true
 
 - shell:
+  - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth /etc/pam.d/system-auth
+  - chown 0644 /etc/pam.d/system-auth
   - cp /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - chmod 0444 /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - rm -rf /home/ak/.yubico
   - cp -R /home/ak/.dotfiles/archlinux/home/yubico /home/ak/.yubico
-  - chown 0600 /home/ak/.yubico
+  - chown 0444 /home/ak/.yubico
   - chattr -i /home/ak/.dotfiles/archlinux/etc/resolv.conf
   - rm /etc/resolv.conf
   - ln -s /home/ak/.dotfiles/archlinux/etc/resolv.conf /etc/resolv.conf
