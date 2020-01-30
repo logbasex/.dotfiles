@@ -41,12 +41,13 @@
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth /etc/pam.d/system-auth
   - chown 0644 /etc/pam.d/system-auth
   - cp /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
-  - chmod 0444 /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - rm -rf /home/ak/.yubico
   - cp -R /home/ak/.dotfiles/archlinux/home/yubico /home/ak/.yubico
-  - chown 0444 /home/ak/.yubico
   - chattr -i /home/ak/.dotfiles/archlinux/etc/resolv.conf
   - rm /etc/resolv.conf
   - ln -s /home/ak/.dotfiles/archlinux/etc/resolv.conf /etc/resolv.conf
-  - chown -R ak.ak /home/ak/
+  - cd /home/ak && chown -R ak.ak .
+  - chmod 0755 /home/ak/.yubico
+  - chmod 0444 /home/ak/.yubico/challenge*
+  - chmod 0444 /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - chattr +i /home/ak/.dotfiles/archlinux/etc/resolv.conf
