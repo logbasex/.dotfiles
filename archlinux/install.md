@@ -104,7 +104,7 @@ Using reflector we will get the 10 most recently HTTPS mirrors and sort them by 
 
 ```
 $ pacman -Sy reflector
-$ reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+$ reflector --country Denmark --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 # Install your Arch system

@@ -49,7 +49,6 @@ yay -S --needed --noconfirm \
     pulseaudio \
     bluez \
     bluez-utils \
-    throttled \
     cryfs \
     dnscrypt-proxy \
     dnsmasq \
@@ -63,7 +62,6 @@ yay -S --needed --noconfirm \
     dnsutils \
     yubikey-full-disk-encryption \
     libinput \
-    rts5227-dkms \
     hunspell-da \
     hunspell \
     aspell-da \
@@ -81,7 +79,9 @@ yay -S --needed --noconfirm \
     ttf-dejavu \
     ttf-liberation \
     virtualbox \
-    virtualbox-ext-oracle
+    virtualbox-ext-oracle \
+    sof-firmware \
+    udisks2
 
 sudo pip install dotbot
 sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
@@ -92,8 +92,8 @@ fi
 
 sudo sensors-detect --auto
 
-sudo systemctl enable lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
-sudo systemctl start lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
+sudo systemctl enable tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
+sudo systemctl start tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
 
 #if [ ! -d cryptboot ]; then
 #    git clone https://github.com/xmikos/cryptboot.git
@@ -105,4 +105,4 @@ sudo systemctl start lenovo_fix.service tlp dnscrypt-proxy dnsmasq reflector.ser
 #    sudo cryptboot update-grub
 #fi
 
-yay -Yc
+yay --noconfirm -Yc

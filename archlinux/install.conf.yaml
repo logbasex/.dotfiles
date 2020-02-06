@@ -17,8 +17,6 @@
    /etc/dnsmasq.conf:
      force: true
      path: /home/ak/.dotfiles/archlinux/etc/dnsmasq.conf
-   /etc/X11/xorg.conf.d/50-synaptics-t440s.conf:
-     path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/50-synaptics-t440s.conf
    /home/ak/.ssh/config:
      path: /home/ak/.dotfiles/archlinux/home/ssh/config
      force: true
@@ -32,13 +30,17 @@
      path: /home/ak/.dotfiles/archlinux/home/zshrc
    /home/ak/.zpreztorc:
      path: /home/ak/.dotfiles/archlinux/home/zpreztorc
-   /etc/pacman.d/hooks/98-secureboot.hook:
-     path: /home/ak/.dotfiles/archlinux/etc/pacman.d/hooks/98-secureboot.hook
    /etc/pacman.d/hooks/99-initramfs-chmod.hook:
      path: /home/ak/.dotfiles/archlinux/etc/pacman.d/hooks/99-initramfs-chmod.hook
+   /etc/modprobe.d/blacklist.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/blacklist.conf
+   /etc/pulse/default.pa:
+     path: /home/ak/.dotfiles/archlinux/etc/pulse/default.pa
 
 - shell:
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth /etc/pam.d/system-auth
+  - cp /home/ak/.dotfiles/archlinux/bluetooth-fix /lib/systemd/system-sleep/bluetooth
+  - chmod +x /lib/systemd/system-sleep/bluetooth
   - chown 0644 /etc/pam.d/system-auth
   - cp /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - rm -rf /home/ak/.yubico
