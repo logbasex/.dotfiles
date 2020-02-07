@@ -86,7 +86,9 @@ yay -S --needed --noconfirm \
     modemmanager \
     mobile-broadband-provider-info \
     usb_modeswitch \
-	gufw
+    gufw \
+    freeoffice \
+    lastpass-cli
 
 sudo pip install dotbot
 sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
