@@ -31,6 +31,7 @@ Fix partition of the host
 ```
 $ cfdisk /dev/sda
 ```
+
 We need ONLY three partitions!
 
 Partition 1 = 512 MiB EFI partition `# Hex EF00`
@@ -146,6 +147,7 @@ $ locale-gen
 ## Set keymap for console
 ```
 $ echo "KEYMAP=dk-latin1" > /etc/vconsole.conf
+$ echo "FONT=sun12x22" >> /etc/vconsole.conf
 ```
 
 ## Set your root password

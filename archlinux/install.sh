@@ -81,7 +81,12 @@ yay -S --needed --noconfirm \
     virtualbox \
     virtualbox-ext-oracle \
     sof-firmware \
-    udisks2
+    udisks2 \
+    alsa-utils \
+    modemmanager \
+    mobile-broadband-provider-info \
+    usb_modeswitch \
+	gufw
 
 sudo pip install dotbot
 sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
