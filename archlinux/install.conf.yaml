@@ -34,8 +34,6 @@
      path: /home/ak/.dotfiles/archlinux/etc/pacman.d/hooks/99-initramfs-chmod.hook
    /etc/modprobe.d/blacklist.conf:
      path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/blacklist.conf
-   /etc/pulse/default.pa:
-     path: /home/ak/.dotfiles/archlinux/etc/pulse/default.pa
 
 - shell:
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth /etc/pam.d/system-auth
