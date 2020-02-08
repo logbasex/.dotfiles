@@ -10,10 +10,21 @@
     - /home/ak/.gnupg
 
 - link:
+   /lib/systemd/system/dnscrypt-proxy.service:
+     path: /home/ak/.dotfiles/archlinux/systemd/system/dnscrypt-proxy.service
+     force: true
+   /lib/systemd/system/dnsmasq.service:
+     path: /home/ak/.dotfiles/archlinux/systemd/system/dnsmasq.service
+     force: true
+   /etc/systemd/system/kill-wan.service:
+     path: /home/ak/.dotfiles/archlinux/systemd/system/kill-wan.service
    /etc/systemd/system/reflector.service:
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.service
    /etc/systemd/system/reflector.timer:
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.timer
+   /etc/docker/daemon.json:
+     force: true
+     path: /home/ak/.dotfiles/archlinux/etc/docker/daemon.json
    /etc/dnsmasq.conf:
      force: true
      path: /home/ak/.dotfiles/archlinux/etc/dnsmasq.conf
@@ -34,15 +45,22 @@
      path: /home/ak/.dotfiles/archlinux/etc/pacman.d/hooks/99-initramfs-chmod.hook
    /etc/modprobe.d/blacklist.conf:
      path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/blacklist.conf
+   /etc/pulse/default.pa:
+     path: /home/ak/.dotfiles/archlinux/etc/pulse/default.pa
+     force: true
+     
 
 - shell:
+  - systemctl enable kill-wan.service
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth /etc/pam.d/system-auth
   - cp /home/ak/.dotfiles/archlinux/bluetooth-fix /lib/systemd/system-sleep/bluetooth
   - chmod +x /lib/systemd/system-sleep/bluetooth
   - chown 0644 /etc/pam.d/system-auth
   - cp /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - rm -rf /home/ak/.yubico
+  - rm -rf /root/.yubico
   - cp -R /home/ak/.dotfiles/archlinux/home/yubico /home/ak/.yubico
+  - cp -R /home/ak/.dotfiles/archlinux/home/yubico /root/.yubico
   - chattr -i /home/ak/.dotfiles/archlinux/etc/resolv.conf
   - rm /etc/resolv.conf
   - ln -s /home/ak/.dotfiles/archlinux/etc/resolv.conf /etc/resolv.conf
@@ -51,3 +69,4 @@
   - chmod 0444 /home/ak/.yubico/challenge*
   - chmod 0444 /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - chattr +i /home/ak/.dotfiles/archlinux/etc/resolv.conf
+  - systemctl daemon-reload

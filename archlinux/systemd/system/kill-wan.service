@@ -1,0 +1,10 @@
+[Unit]
+Description=Kill WAN Connection
+Before=sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=-/sbin/rmmod xmm7360
+
+[Install]
+WantedBy=sleep.target

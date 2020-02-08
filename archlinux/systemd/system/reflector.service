@@ -2,10 +2,16 @@
 Description=Pacman mirrorlist update
 Wants=network-online.target
 After=network-online.target
+After=dnscrypt-proxy.service
+After=dnsmasq.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/reflector --country Denmark --protocol https --latest 30 --number 20 --sort rate --save /etc/pacman.d/mirrorlist
+ExecStart=/usr/bin/reflector --country Denmark --country Sweden --country Netherlands --protocol https --latest 30 --sort rate --save /etc/pacman.d/mirrorlist
+TimeoutStartSec=1min
+Restart=on-failure
+StartLimitBurst=3
+StartLimitInterval=60s
 
 [Install]
 RequiredBy=multi-user.target

@@ -1,7 +1,6 @@
 [user]
 	name = Andreas Kruger
 	email = ak@patientsky.com
-	signingkey = C904462C
 [push]
 	default = simple
 [github]
@@ -17,7 +16,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 [commit]
-	gpgsign = true
+	gpgsign = false 
 [gpg]
 	program = gpg
 [alias]

@@ -1,0 +1,19 @@
+[Unit]
+Description=A lightweight DHCP and caching DNS server
+Wants=network-online.target
+After=network-online.target
+After=dnscrypt-proxy.service
+Documentation=man:dnsmasq(8)
+
+[Service]
+Type=dbus
+BusName=uk.org.thekelleys.dnsmasq
+ExecStartPre=/usr/bin/dnsmasq --test
+ExecStart=/usr/bin/dnsmasq -k --enable-dbus --user=dnsmasq --pid-file
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+StartLimitBurst=3
+StartLimitInterval=60s
+
+[Install]
+WantedBy=multi-user.target

@@ -23,6 +23,12 @@ if [ ! -d powerlevel10k ]; then
     git clone https://github.com/romkatv/powerlevel10k.git
 fi
 
+if [ ! -d xmm7360-pci ]; then
+    git clone https://github.com/xmm7360/xmm7360-pci.git
+    make
+    make load
+fi
+
 yay -S --needed --noconfirm \
     google-chrome \
     spotify \
@@ -88,10 +94,23 @@ yay -S --needed --noconfirm \
     usb_modeswitch \
     gufw \
     freeoffice \
-    lastpass-cli
+    lastpass-cli \
+    xsel \
+    net-tools \
+    rtl8822bu-dkms-git \
+    docker \
+    k9s \
+    bluedevil \
+    korganizer \
+    kubectl
 
-sudo pip install dotbot
+sudo pip install dotbot ansible ipaddr pip-review pyroute2
+sudo pip install --user ConfigArgParse
 sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
+
+if [ ! -d "${ZDOTDIR:-$HOME}/.zprezto"]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+fi
 
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
     chsh -s /usr/bin/zsh
@@ -99,8 +118,8 @@ fi
 
 sudo sensors-detect --auto
 
-sudo systemctl enable tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
-sudo systemctl start tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald
+sudo systemctl enable tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald docker
+sudo systemctl start tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald docker
 
 #if [ ! -d cryptboot ]; then
 #    git clone https://github.com/xmikos/cryptboot.git
