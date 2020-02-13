@@ -45,6 +45,8 @@
      path: /home/ak/.dotfiles/archlinux/etc/pacman.d/hooks/99-initramfs-chmod.hook
    /etc/modprobe.d/blacklist.conf:
      path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/blacklist.conf
+   /etc/modprobe.d/nobeep.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/nobeep.conf
    /etc/pulse/default.pa:
      path: /home/ak/.dotfiles/archlinux/etc/pulse/default.pa
      force: true
@@ -57,6 +59,12 @@
    /etc/X11/xorg.conf.d/00-keyboard.conf:
      path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/00-keyboard.conf
      force: true
+   /etc/X11/xorg.conf.d/20-intel.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/20-intel.conf
+   /etc/X11/xorg.conf.d/30-trackpad.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/30-trackpad.conf
+   /etc/X11/xorg.conf.d/90-monitor.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/90-monitor.conf
 
 - shell:
   - systemctl enable kill-wan.service

@@ -128,7 +128,19 @@ ethtool \
 smartmontools \
 acpi_call \
 print-manager \
-cups
+cups \
+zip \
+xorg-xlsfonts \
+xorg-xdpyinfo \
+xorg-xbacklight \
+xorg-xkill \
+xf86-input-mouse \
+xf86-input-keyboard \
+unzip \
+usbutils \
+traceroute \
+powerline-fonts
+
 
 balooctl suspend
 balooctl disable
