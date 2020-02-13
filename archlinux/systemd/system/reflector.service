@@ -2,13 +2,13 @@
 Description=Pacman mirrorlist update
 Wants=network-online.target
 After=network-online.target
-After=dnscrypt-proxy.service
+After=dnscrypt-proxy.https://aur.archlinux.org/mailspring.gitservice
 After=dnsmasq.service
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/reflector --country Denmark --country Sweden --country Netherlands --protocol https --latest 30 --sort rate --save /etc/pacman.d/mirrorlist
-TimeoutStartSec=1min
+TimeoutStartSec=1minhttps://aur.archlinux.org/mailspring.git
 Restart=on-failure
 StartLimitBurst=3
 StartLimitInterval=60s

@@ -48,7 +48,10 @@
    /etc/pulse/default.pa:
      path: /home/ak/.dotfiles/archlinux/etc/pulse/default.pa
      force: true
-     
+   /home/ak/.config/chromium-flags.conf:
+     path: /home/ak/.dotfiles/archlinux/home/config/chromium-flags.conf
+     force: true
+
 
 - shell:
   - systemctl enable kill-wan.service

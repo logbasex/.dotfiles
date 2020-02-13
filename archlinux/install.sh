@@ -15,6 +15,13 @@ if [ ! -d kwin-tiling ]; then
     cd ~
 fi
 
+if [ ! -d kwin-quick-tile-2 ]; then
+    git clone https://github.com/tsoernes/kwin-quick-tile-2.git
+    cd kwin-quick-tile-2
+    sh install.sh
+    cd ~
+fi
+
 if [ ! -d gitstatus ]; then
     git clone https://github.com/romkatv/gitstatus.git
 fi
@@ -32,23 +39,23 @@ fi
 yay -S --needed --noconfirm \
     google-chrome \
     spotify \
-    visual-studio-code-bin  \
-    teamviewer  \
-    slack-desktop  \
-    dropbox  \
-    polybar  \
-    dolphin  \
-    redshift  \
-    vlc  \
-    spectacle  \
-    kwalletmanager  \
-    kinfocenter  \
-    ark  \
+    visual-studio-code-bin \
+    teamviewer \
+    slack-desktop \
+    dropbox \
+    polybar \
+    dolphin \
+    redshift \
+    vlc \
+    spectacle \
+    kwalletmanager \
+    kinfocenter \
+    ark \
     thunderbird \
     terminator \
     latte-dock \
     grc-solarized \
-    yubico-pam \
+    yubico-pam \ \
     openvpn \
     networkmanager-openvpn \
     plasma-pa \
@@ -93,6 +100,7 @@ yay -S --needed --noconfirm \
     mobile-broadband-provider-info \
     usb_modeswitch \
     gufw \
+    ufw \
     freeoffice \
     lastpass-cli \
     xsel \
@@ -102,13 +110,20 @@ yay -S --needed --noconfirm \
     k9s \
     bluedevil \
     korganizer \
-    kubectl
+    kubectl \
+    npm \
+    shellcheck \
+    okular \
+    chromium-vaapi-bin \
+    libva-intel-driver \
+    libva-utils \
+    boxcryptor
 
 sudo pip install dotbot ansible ipaddr pip-review pyroute2
 sudo pip install --user ConfigArgParse
 sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
 
-if [ ! -d "${ZDOTDIR:-$HOME}/.zprezto"]; then
+if [ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 fi
 
@@ -118,8 +133,8 @@ fi
 
 sudo sensors-detect --auto
 
-sudo systemctl enable tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald docker
-sudo systemctl start tlp dnscrypt-proxy dnsmasq reflector.service reflector.timer thermald docker
+sudo systemctl enable ufw tlp dnscrypt-proxy dnsmasq thermald docker
+sudo systemctl start ufw tlp dnscrypt-proxy dnsmasq thermald docker
 
 #if [ ! -d cryptboot ]; then
 #    git clone https://github.com/xmikos/cryptboot.git
