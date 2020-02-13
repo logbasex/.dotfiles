@@ -36,92 +36,106 @@ if [ ! -d xmm7360-pci ]; then
     make load
 fi
 
-yay -S --needed --noconfirm \
-    google-chrome \
-    spotify \
-    visual-studio-code-bin \
-    teamviewer \
-    slack-desktop \
-    dropbox \
-    polybar \
-    dolphin \
-    redshift \
-    vlc \
-    spectacle \
-    kwalletmanager \
-    kinfocenter \
-    ark \
-    thunderbird \
-    terminator \
-    latte-dock \
-    grc-solarized \
-    yubico-pam \ \
-    openvpn \
-    networkmanager-openvpn \
-    plasma-pa \
-    pulseaudio \
-    bluez \
-    bluez-utils \
-    cryfs \
-    dnscrypt-proxy \
-    dnsmasq \
-    sudo \
-    zsh \
-    wget \
-    powertop \
-    tlp \
-    python \
-    python-pip \
-    dnsutils \
-    yubikey-full-disk-encryption \
-    libinput \
-    hunspell-da \
-    hunspell \
-    aspell-da \
-    aspell-en \
-    binutils \
-    fakeroot \
-    thermald \
-    lm_sensors \
-    kscreen \
-    plasma-vault \
-    plasma-thunderbolt \
-    powerdevil \
-    user-manager \
-    fwupd \
-    ttf-dejavu \
-    ttf-liberation \
-    virtualbox \
-    virtualbox-ext-oracle \
-    sof-firmware \
-    udisks2 \
-    alsa-utils \
-    modemmanager \
-    mobile-broadband-provider-info \
-    usb_modeswitch \
-    gufw \
-    ufw \
-    freeoffice \
-    lastpass-cli \
-    xsel \
-    net-tools \
-    rtl8822bu-dkms-git \
-    docker \
-    k9s \
-    bluedevil \
-    korganizer \
-    kubectl \
-    npm \
-    shellcheck \
-    okular \
-    chromium-vaapi-bin \
-    libva-intel-driver \
-    libva-utils \
-    boxcryptor
+yay -Syu --needed --noconfirm \
+google-chrome \
+spotify \
+visual-studio-code-bin \
+teamviewer \
+slack-desktop \
+dropbox \
+polybar \
+dolphin \
+redshift \
+vlc \
+spectacle \
+kwalletmanager \
+kinfocenter \
+ark \
+thunderbird \
+terminator \
+latte-dock \
+grc-solarized \
+yubico-pam \
+openvpn \
+networkmanager-openvpn \
+plasma-pa \
+pulseaudio \
+bluez \
+bluez-utils \
+cryfs \
+dnscrypt-proxy \
+dnsmasq \
+sudo \
+zsh \
+wget \
+powertop \
+tlp \
+python \
+python-pip \
+dnsutils \
+yubikey-full-disk-encryption \
+libinput \
+hunspell-da \
+hunspell \
+aspell-da \
+aspell-en \
+binutils \
+fakeroot \
+thermald \
+lm_sensors \
+kscreen \
+plasma-vault \
+plasma-thunderbolt \
+powerdevil \
+user-manager \
+fwupd \
+ttf-dejavu \
+ttf-liberation \
+virtualbox \
+virtualbox-ext-oracle \
+sof-firmware \
+udisks2 \
+alsa-utils \
+modemmanager \
+mobile-broadband-provider-info \
+usb_modeswitch \
+gufw \
+ufw \
+freeoffice \
+lastpass-cli \
+xsel \
+net-tools \
+rtl8822bu-dkms-git \
+docker \
+k9s \
+bluedevil \
+korganizer \
+kubectl \
+npm \
+shellcheck \
+okular \
+chromium-vaapi-bin \
+libva-intel-driver \
+libva-utils \
+sddm-kcm \
+plasma-wayland-session \
+kio-gdrive \
+telepathy-kde-accounts-kcm \
+neofetch \
+xorg-xrandr \
+boxcryptor \
+ethtool \
+smartmontools \
+acpi_call \
+print-manager \
+cups
+
+balooctl suspend
+balooctl disable
 
 sudo pip install dotbot ansible ipaddr pip-review pyroute2
 sudo pip install --user ConfigArgParse
-sudo dotbot -c ~/.dotfiles/archlinux/install.conf.yaml
+sudo dotbot -c /home/ak/.dotfiles/archlinux/install.conf.yaml
 
 if [ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"

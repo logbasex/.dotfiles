@@ -51,7 +51,12 @@
    /home/ak/.config/chromium-flags.conf:
      path: /home/ak/.dotfiles/archlinux/home/config/chromium-flags.conf
      force: true
-
+   /etc/sddm.conf.d/sddm.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/sddm.conf.d/sddm.conf
+     force: true
+   /etc/X11/xorg.conf.d/00-keyboard.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/00-keyboard.conf
+     force: true
 
 - shell:
   - systemctl enable kill-wan.service
