@@ -73,7 +73,9 @@ if command grc &>/dev/null; then
   alias mount='grc mount'
   alias ps='grc ps'
   alias ifconfig='grc ifconfig'
+  alias ls='grc ls -G'
+else
+  alias ls='ls -G'
 fi
-alias ls="ls -G"
 alias vi="vim"
 alias dir="ls"

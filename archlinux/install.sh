@@ -1,25 +1,25 @@
 #!/bin/bash
-cd ~
+cd ~ || exit
 
 if [ ! -d yay ]; then
     git clone https://aur.archlinux.org/yay.git
-    cd yay
+    cd yay || exit
     makepkg -si
-    cd ~
+    cd ~ || exit
 fi
 
 if [ ! -d kwin-tiling ]; then
     git clone https://github.com/kwin-scripts/kwin-tiling.git
-    cd kwin-tiling/
+    cd kwin-tiling/ || exit
     plasmapkg2 --type kwinscript -i .
-    cd ~
+    cd ~ || exit
 fi
 
 if [ ! -d kwin-quick-tile-2 ]; then
     git clone https://github.com/tsoernes/kwin-quick-tile-2.git
-    cd kwin-quick-tile-2
+    cd kwin-quick-tile-2 || exit
     sh install.sh
-    cd ~
+    cd ~ || exit
 fi
 
 if [ ! -d gitstatus ]; then
@@ -36,23 +36,20 @@ if [ ! -d xmm7360-pci ]; then
     make load
 fi
 
-yay -Syu --needed --noconfirm \
-google-chrome \
+yay -Syu --needed --noconfirm --nodiffmenu --batchinstall \
 spotify \
 visual-studio-code-bin \
 teamviewer \
 slack-desktop \
 dropbox \
-polybar \
 dolphin \
-redshift \
 vlc \
 spectacle \
 kwalletmanager \
 kinfocenter \
 ark \
 thunderbird \
-terminator \
+konsole \
 latte-dock \
 grc-solarized \
 yubico-pam \
@@ -123,7 +120,6 @@ kio-gdrive \
 telepathy-kde-accounts-kcm \
 neofetch \
 xorg-xrandr \
-boxcryptor \
 ethtool \
 smartmontools \
 acpi_call \
@@ -134,16 +130,23 @@ xorg-xlsfonts \
 xorg-xdpyinfo \
 xorg-xbacklight \
 xorg-xkill \
-xf86-input-mouse \
-xf86-input-keyboard \
 unzip \
 usbutils \
 traceroute \
-powerline-fonts
-
-
-balooctl suspend
-balooctl disable
+powerline-fonts \
+chromium-widevine \
+brightnessctl \
+tlp-rdw \
+ananicy-git \
+usbguard \
+dolphin-plugins \
+system-config-printer \
+pulseaudio-alsa \
+pulseaudio-bluetooth \
+bluez \
+bluez-libs \
+bluez-utils \
+xprintidle
 
 sudo pip install dotbot ansible ipaddr pip-review pyroute2
 sudo pip install --user ConfigArgParse
@@ -154,13 +157,30 @@ if [ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]; then
 fi
 
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
-    chsh -s /usr/bin/zsh
+  chsh -s /usr/bin/zsh
+fi
+
+if [ ! -f /usr/local/bin/kubectl-login ]; then
+  cd /usr/local/bin || exit
+  sudo wget https://github.com/pasientskyhosting/ps-kubectl-login/releases/download/v1.1/kubectl-login-linux
+  sudo mv kubectl-login-linux kubectl-login
+  sudo chmod +x kubectl-login
+  cd ~ || exit
 fi
 
 sudo sensors-detect --auto
 
-sudo systemctl enable ufw tlp dnscrypt-proxy dnsmasq thermald docker
-sudo systemctl start ufw tlp dnscrypt-proxy dnsmasq thermald docker
+balooctl suspend
+balooctl disable
+
+sudo systemctl mask systemd-rfkill.service systemd-rfkill.service
+sudo systemctl disable systemd-rfkill
+sudo systemctl stop systemd-rfkill
+sudo systemctl enable ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth
+sudo systemctl start ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth
+sudo btmgmt ssp of
+
+yay --noconfirm -Yc
 
 #if [ ! -d cryptboot ]; then
 #    git clone https://github.com/xmikos/cryptboot.git
@@ -171,5 +191,3 @@ sudo systemctl start ufw tlp dnscrypt-proxy dnsmasq thermald docker
 #    sudo cryptboot-efikeys enroll
 #    sudo cryptboot update-grub
 #fi
-
-yay --noconfirm -Yc

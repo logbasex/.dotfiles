@@ -158,7 +158,7 @@ $ passwd
 ## Create a User
 Assign appropriate Group membership, and set a User password.  'Wheel' is just one important Group.
 ```
-$ useradd -m -G wheel,storage,power,network,uucp -s /bin/bash MyUserName
+$ useradd -m -G wheel,storage,power,network,uucp,lp -s /bin/bash MyUserName
 $ passwd MyUserName
 ```
 
@@ -195,7 +195,7 @@ $ vim /etc/mkinitcpio.conf
 
 SET THE FOLLOWING OPTIONS
 ```
-MODULES(xfs)
+MODULES(xfs i915)
 HOOKS=(base udev keyboard keymap consolefont autodetect modconf block encrypt lvm2 resume decryption-keys filesystems fsck)
 ```
 
@@ -280,14 +280,14 @@ Setup reflector again and install required packages.
 
 ```
 $ reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-$ pacman -Sy plasma-desktop sddm networkmanager plasma-nm intel-ucode xf86-video-intel git openssh terminator
+$ pacman -Sy plasma-desktop sddm networkmanager plasma-nm intel-ucode git openssh konsole
 $ systemctl enable sddm NetworkManager
 $ pacman -R netctl dhcpcd
 $ reboot
 ```
 
 Log in to sddm's GUI as your user.
-Complete the setup , by opening the Terminator shell and do:
+Complete the setup , by opening the konsole shell and do:
 
 ```
 $ git clone https://github.com/woopstar/dotfiles ~/.dotfiles

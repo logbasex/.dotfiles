@@ -1,0 +1,8 @@
+[Unit]
+Description=Disables keyboard backlight when inactive.
+
+[Service]
+ExecStart=/home/ak/scripts/kbd_idle
+
+[Install]
+WantedBy=multi-user.target

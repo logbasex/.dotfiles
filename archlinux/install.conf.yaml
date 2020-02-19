@@ -20,6 +20,8 @@
      path: /home/ak/.dotfiles/archlinux/systemd/system/kill-wan.service
    /etc/systemd/system/reflector.service:
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.service
+   /etc/systemd/system/kbd_idle.service:
+     path: /home/ak/.dotfiles/archlinux/systemd/system/kbd_idle.service
    /etc/systemd/system/reflector.timer:
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.timer
    /etc/docker/daemon.json:
@@ -47,6 +49,8 @@
      path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/blacklist.conf
    /etc/modprobe.d/nobeep.conf:
      path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/nobeep.conf
+   /etc/modprobe.d/i915.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/i915.conf
    /etc/pulse/default.pa:
      path: /home/ak/.dotfiles/archlinux/etc/pulse/default.pa
      force: true
@@ -59,19 +63,22 @@
    /etc/X11/xorg.conf.d/00-keyboard.conf:
      path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/00-keyboard.conf
      force: true
-   /etc/X11/xorg.conf.d/20-intel.conf:
-     path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/20-intel.conf
    /etc/X11/xorg.conf.d/30-trackpad.conf:
      path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/30-trackpad.conf
    /etc/X11/xorg.conf.d/90-monitor.conf:
      path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/90-monitor.conf
+   /etc/sysctl.d/network.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/sysctl.d/network.conf
+   /home/ak/scripts/kbd_idle:
+     path: /home/ak/.dotfiles/archlinux/scripts/kbd_idle
 
 - shell:
   - systemctl enable kill-wan.service
+  - systemctl enable --now kbd_idle.service
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth /etc/pam.d/system-auth
+  - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-login /etc/pam.d/system-login
   - cp /home/ak/.dotfiles/archlinux/bluetooth-fix /lib/systemd/system-sleep/bluetooth
-  - chmod +x /lib/systemd/system-sleep/bluetooth
-  - chown 0644 /etc/pam.d/system-auth
+  - cp /home/ak/.dotfiles/archlinux/etc/usbguard/rules.conf /etc/usbguard/rules.conf
   - cp /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - rm -rf /home/ak/.yubico
   - rm -rf /root/.yubico
@@ -84,5 +91,8 @@
   - chmod 0755 /home/ak/.yubico
   - chmod 0444 /home/ak/.yubico/challenge*
   - chmod 0444 /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+  - chmod 0400 /etc/usbguard/rules.conf
+  - chmod +x /lib/systemd/system-sleep/bluetooth
+  - chown 0644 /etc/pam.d/system-auth
   - chattr +i /home/ak/.dotfiles/archlinux/etc/resolv.conf
   - systemctl daemon-reload
