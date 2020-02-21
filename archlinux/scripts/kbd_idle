@@ -7,16 +7,16 @@ while true; do
   idleTimeMillis=$(sudo -u ak env DISPLAY=:0.0 xprintidle)
   if [[ $idle = false && $idleTimeMillis -gt $idleAfter ]] ; then
     savedState=$(cat /sys/class/leds/tpacpi::kbd_backlight/brightness)
-    sudo /bin/sh -c "echo 0 >> /sys/class/leds/tpacpi::kbd_backlight/brightness"
+    echo 0 >> /sys/class/leds/tpacpi::kbd_backlight/brightness
     idle=true
     echo "Keyboard dimmed."
   fi
 
   if [[ $idle = true && $idleTimeMillis -lt $idleAfter ]] ; then
-    sudo /bin/sh -c "echo $savedState >> /sys/class/leds/tpacpi::kbd_backlight/brightness"
+    echo $savedState >> /sys/class/leds/tpacpi::kbd_backlight/brightness
     idle=false
     echo "Keyboard brightened."
   fi
 
-  sleep 1
+  sleep 3
 done

@@ -17,8 +17,8 @@ alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 alias fuckgpg="gpg-connect-agent killagent /bye; gpg-connect-agent /bye"
 alias review='function _review(){ current_branch=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`; git fetch origin pull/$1/head; git checkout FETCH_HEAD; git show;git checkout $current_branch };_review'
-alias wan_online='cd /home/ak/xmm7360-pci; make load; sudo python3 rpc/open_xdatachannel.py -r --apn www.internet.mtelia.dk -m 1000'
-alias wan_offline='sudo /sbin/rmmod xmm7360'
+alias wan_online='cd /home/ak/xmm7360-pci; make; make load; nmcli radio wifi off; sudo python3 rpc/open_xdatachannel.py -r --apn www.internet.mtelia.dk -m 1000'
+alias wan_offline='sudo /sbin/rmmod xmm7360; nmcli radio wifi on'
 
 curl_debug() {
     curl -w '\n{"contentType":"%{content_type}","filenameEffective":"%{filename_effective}","ftpEntryPath":"%{ftp_entry_path}","httpCode":"%{http_code}","httpConnect":"%{http_connect}","httpVersion":"%{http_version}","localIp":"%{local_ip}","localPort":"%{local_port}","numConnects":"%{num_connects}","numRedirects":"%{num_redirects}","proxySslVerifyResult":"%{proxy_ssl_verify_result}","redirectUrl":"%{redirect_url}","remoteIp":"%{remote_ip}","remotePort":"%{remote_port}","scheme":"%{scheme}","size":{"download":"%{size_download}","header":"%{size_header}","request":"%{size_request}","upload":"%{size_upload}"},"speed":{"download":"%{speed_download}","upload":"%{speed_upload}"},"sslVerifyResult":"%{ssl_verify_result}","time":{"appconnect":"%{time_appconnect}","connect":"%{time_connect}","namelookup":"%{time_namelookup}","pretransfer":"%{time_pretransfer}","redirect":"%{time_redirect}","starttransfer":"%{time_starttransfer}","total":"%{time_total}"},"urlEffective":"%{url_effective}"}' "$@"
