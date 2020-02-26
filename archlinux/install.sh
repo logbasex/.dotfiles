@@ -146,7 +146,11 @@ pulseaudio-bluetooth \
 bluez \
 bluez-libs \
 bluez-utils \
-xprintidle
+xprintidle \
+tp_smapi \
+tlpui \
+nerd-fonts-complete \
+khotkeys
 
 sudo pip install dotbot ansible ipaddr pip-review pyroute2
 sudo pip install --user ConfigArgParse
