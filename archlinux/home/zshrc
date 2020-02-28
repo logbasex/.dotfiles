@@ -79,3 +79,6 @@ else
 fi
 alias vi="vim"
 alias dir="ls"
+
+# auto login to lpass
+lpass status > /dev/null || lpass login andreas@kruger.nu
