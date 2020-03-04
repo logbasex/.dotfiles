@@ -71,10 +71,16 @@
      path: /home/ak/.dotfiles/archlinux/etc/sysctl.d/network.conf
    /home/ak/scripts/kbd_idle:
      path: /home/ak/.dotfiles/archlinux/scripts/kbd_idle
+   /etc/nsswitch.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/nsswitch.conf
+     force: true
+   /etc/NetworkManager/conf.d/dns.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/NetworkManager/conf.d/dns.conf
 
 - shell:
   - systemctl enable kill-wan.service
-  - systemctl enable --now kbd_idle.service
+  # - systemctl enable kbd_idle.service
+  - systemctl restart NetworkManager
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth /etc/pam.d/system-auth
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-login /etc/pam.d/system-login
   - cp /home/ak/.dotfiles/archlinux/bluetooth-fix /lib/systemd/system-sleep/bluetooth
@@ -84,15 +90,11 @@
   - rm -rf /root/.yubico
   - cp -R /home/ak/.dotfiles/archlinux/home/yubico /home/ak/.yubico
   - cp -R /home/ak/.dotfiles/archlinux/home/yubico /root/.yubico
-  - chattr -i /home/ak/.dotfiles/archlinux/etc/resolv.conf
-  - rm /etc/resolv.conf
-  - ln -s /home/ak/.dotfiles/archlinux/etc/resolv.conf /etc/resolv.conf
-  - cd /home/ak && chown -R ak.ak .
+  - chown -R ak.ak /home/ak/.yubico
   - chmod 0755 /home/ak/.yubico
   - chmod 0444 /home/ak/.yubico/challenge*
   - chmod 0444 /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - chmod 0400 /etc/usbguard/rules.conf
+  - chmod 0644 /etc/pam.d/system-auth
   - chmod +x /lib/systemd/system-sleep/bluetooth
-  - chown 0644 /etc/pam.d/system-auth
-  - chattr +i /home/ak/.dotfiles/archlinux/etc/resolv.conf
   - systemctl daemon-reload

@@ -5,8 +5,9 @@ fi
 
 autoload -Uz compinit
 compinit
-source ~/gitstatus/gitstatus.plugin.zsh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+#source ~/gitstatus/gitstatus.plugin.zsh
+#source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # Customize to your needs...
 export LC_ALL=da_DK.UTF-8
@@ -73,9 +74,9 @@ if command grc &>/dev/null; then
   alias mount='grc mount'
   alias ps='grc ps'
   alias ifconfig='grc ifconfig'
-  alias ls='grc ls -G'
+  alias ls='grc ls'
 else
-  alias ls='ls -G'
+  alias ls='ls'
 fi
 alias vi="vim"
 alias dir="ls"

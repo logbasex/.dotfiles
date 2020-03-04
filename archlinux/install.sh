@@ -8,13 +8,6 @@ if [ ! -d yay ]; then
     cd ~ || exit
 fi
 
-if [ ! -d kwin-tiling ]; then
-    git clone https://github.com/kwin-scripts/kwin-tiling.git
-    cd kwin-tiling/ || exit
-    plasmapkg2 --type kwinscript -i .
-    cd ~ || exit
-fi
-
 if [ ! -d kwin-quick-tile-2 ]; then
     git clone https://github.com/tsoernes/kwin-quick-tile-2.git
     cd kwin-quick-tile-2 || exit
@@ -22,18 +15,8 @@ if [ ! -d kwin-quick-tile-2 ]; then
     cd ~ || exit
 fi
 
-if [ ! -d gitstatus ]; then
-    git clone https://github.com/romkatv/gitstatus.git
-fi
-
-if [ ! -d powerlevel10k ]; then
-    git clone https://github.com/romkatv/powerlevel10k.git
-fi
-
 if [ ! -d xmm7360-pci ]; then
     git clone https://github.com/xmm7360/xmm7360-pci.git
-    make
-    make load
 fi
 
 yay -Syu --needed --noconfirm --nodiffmenu --batchinstall \
@@ -150,7 +133,11 @@ xprintidle \
 tp_smapi \
 tlpui \
 nerd-fonts-complete \
-khotkeys
+khotkeys \
+nss-mdns \
+remmina \
+freerdp \
+remmina-plugin-rdesktop
 
 sudo pip install dotbot ansible ipaddr pip-review pyroute2
 sudo pip install --user ConfigArgParse
@@ -177,9 +164,9 @@ sudo sensors-detect --auto
 balooctl suspend
 balooctl disable
 
+sudo systemctl stop systemd-rfkill systemd-resolved.service
+sudo systemctl disable systemd-rfkill systemd-resolved.service
 sudo systemctl mask systemd-rfkill.service systemd-rfkill.service
-sudo systemctl disable systemd-rfkill
-sudo systemctl stop systemd-rfkill
 sudo systemctl enable ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth
 sudo systemctl start ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth
 sudo btmgmt ssp of
