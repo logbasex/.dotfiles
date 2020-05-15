@@ -1,7 +1,9 @@
 [user]
-	name = Andreas Kruger
-	email = ak@patientsky.com
+	name = Andreas Kruger 
+	email = ak@patientsky.com 
 	signingkey = C904462C
+[credential]
+	helper = osxkeychain
 [push]
 	default = simple
 [github]
@@ -11,13 +13,14 @@
 	ui = true
 [core]
 	editor = vim
+	excludesfile = /Users/andreaskruger/.gitignore_global
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 [commit]
-	gpgsign = true
+	gpgsign = true 
 [gpg]
 	program = gpg
 [alias]

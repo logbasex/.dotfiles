@@ -19,125 +19,151 @@ if [ ! -d xmm7360-pci ]; then
     git clone https://github.com/xmm7360/xmm7360-pci.git
 fi
 
+if [ ! -f /usr/local/bin/kubectl-login ]; then
+  sudo wget https://github.com/pasientskyhosting/ps-kubectl-login/releases/download/v1.1/kubectl-login-linux -o /usr/local/bin/kubectl-login
+  sudo chmod +x /usr/local/bin/kubectl-login
+fi
+
+if [ ! -f /usr/local/bin/dropbox.py ]; then
+  sudo wget https://www.dropbox.com/download?dl=packages/dropbox.py -o /usr/local/bin/dropbox.py
+  sudo chmod +x /usr/local/bin/dropbox.py
+fi
+
 yay -Syu --needed --noconfirm --nodiffmenu --batchinstall \
-spotify \
-visual-studio-code-bin \
-teamviewer \
-slack-desktop \
-dropbox \
-dolphin \
-vlc \
-spectacle \
-kwalletmanager \
-kinfocenter \
+acpid \
+acpi_call \
+alsa-utils \
+ananicy-git \
 ark \
-thunderbird \
-konsole \
-latte-dock \
-grc-solarized \
-yubico-pam \
-openvpn \
-networkmanager-openvpn \
-plasma-pa \
-pulseaudio \
-bluez \
-bluez-utils \
-cryfs \
-dnscrypt-proxy \
-dnsmasq \
-sudo \
-zsh \
-wget \
-powertop \
-tlp \
-python \
-python-pip \
-dnsutils \
-yubikey-full-disk-encryption \
-libinput \
-hunspell-da \
-hunspell \
 aspell-da \
 aspell-en \
 binutils \
-fakeroot \
-thermald \
-lm_sensors \
-kscreen \
-plasma-vault \
-plasma-thunderbolt \
-powerdevil \
-user-manager \
-fwupd \
-ttf-dejavu \
-ttf-liberation \
-virtualbox \
-virtualbox-ext-oracle \
-sof-firmware \
-udisks2 \
-alsa-utils \
-modemmanager \
-mobile-broadband-provider-info \
-usb_modeswitch \
-gufw \
-ufw \
-freeoffice \
-lastpass-cli \
-xsel \
-net-tools \
-rtl8822bu-dkms-git \
-docker \
-k9s \
 bluedevil \
-korganizer \
-kubectl \
-npm \
-shellcheck \
-okular \
-chromium-vaapi-bin \
-libva-intel-driver \
-libva-utils \
-sddm-kcm \
-plasma-wayland-session \
-kio-gdrive \
-telepathy-kde-accounts-kcm \
-neofetch \
-xorg-xrandr \
-ethtool \
-smartmontools \
-acpi_call \
-print-manager \
-cups \
-zip \
-xorg-xlsfonts \
-xorg-xdpyinfo \
-xorg-xbacklight \
-xorg-xkill \
-unzip \
-usbutils \
-traceroute \
-powerline-fonts \
-chromium-widevine \
-brightnessctl \
-tlp-rdw \
-ananicy-git \
-usbguard \
-dolphin-plugins \
-system-config-printer \
-pulseaudio-alsa \
-pulseaudio-bluetooth \
+bluez \
 bluez \
 bluez-libs \
 bluez-utils \
-xprintidle \
-tp_smapi \
-tlpui \
-nerd-fonts-complete \
-khotkeys \
-nss-mdns \
-remmina \
+bluez-utils \
+brightnessctl \
+bzip2 \
+chromium-vaapi \
+chromium-widevine \
+cryfs \
+cups \
+dmenu \
+dmenu-lpass-nu \
+dnscrypt-proxy \
+dnsmasq \
+dnsutils \
+docker \
+dolphin \
+dolphin-plugins \
+dropbox \
+ethtool \
+fakeroot \
+freeoffice \
 freerdp \
-remmina-plugin-rdesktop
+fwupd \
+git \
+git-crypt \
+grc-solarized \
+gufw \
+hunspell \
+hunspell-da \
+k9s \
+khotkeys \
+kinfocenter \
+kio-gdrive \
+konsole \
+korganizer \
+kscreen \
+kubectl \
+kubectx \
+kwalletmanager \
+lastpass-cli \
+latte-dock \
+libinput \
+libva-intel-driver \
+libva-utils \
+libu2f-host \
+lm_sensors \
+mobile-broadband-provider-info \
+modemmanager \
+neofetch \
+nerd-fonts-complete \
+net-tools \
+networkmanager-openvpn \
+nodejs \
+npm \
+nss-mdns \
+okular \
+openvpn \
+plasma-pa \
+plasma-thunderbolt \
+plasma-vault \
+plasma-wayland-session \
+powerdevil \
+powerline-fonts \
+powertop \
+print-manager \
+pulseaudio \
+pulseaudio-alsa \
+pulseaudio-bluetooth \
+python \
+python-gpgme \
+python-pip \
+remmina \
+remmina-plugin-rdesktop \
+rtl8822bu-dkms-git \
+sddm-kcm \
+shellcheck \
+slack-desktop \
+smartmontools \
+sof-firmware \
+spectacle \
+spotify \
+sslscan \
+sudo \
+system-config-printer \
+teamviewer \
+telepathy-kde-accounts-kcm \
+thermald \
+thunderbird \
+tlp \
+tlp-rdw \
+tlpui-git \
+tpacpi-bat \
+traceroute \
+ttf-dejavu \
+ttf-liberation \
+udisks2 \
+ufw \
+unzip \
+usbguard \
+usb_modeswitch \
+usbutils \
+user-manager \
+virtualbox \
+virtualbox-ext-oracle \
+visual-studio-code-bin \
+vlc \
+wget \
+whatmask \
+xorg-xbacklight \
+xorg-xdpyinfo \
+xorg-xkill \
+xorg-xlsfonts \
+xorg-xrandr \
+xprintidle \
+xsel \
+yubico-pam \
+yubikey-full-disk-encryption \
+zip \
+zsh \
+awesome-terminal-fonts \
+ttf-camingocode \
+pyenv \
+pyenv-virtualenv
 
 sudo pip install dotbot ansible ipaddr pip-review pyroute2
 sudo pip install --user ConfigArgParse
@@ -151,25 +177,18 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
   chsh -s /usr/bin/zsh
 fi
 
-if [ ! -f /usr/local/bin/kubectl-login ]; then
-  cd /usr/local/bin || exit
-  sudo wget https://github.com/pasientskyhosting/ps-kubectl-login/releases/download/v1.1/kubectl-login-linux
-  sudo mv kubectl-login-linux kubectl-login
-  sudo chmod +x kubectl-login
-  cd ~ || exit
-fi
+sudo systemctl stop systemd-rfkill systemd-resolved.service
+sudo systemctl disable systemd-rfkill systemd-resolved.service
+sudo systemctl mask systemd-rfkill.service systemd-rfkill.service
+sudo systemctl enable ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth acpid
+sudo systemctl start ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth acpid
 
+#sudo btmgmt ssp of
+sudo pip-review --local
 sudo sensors-detect --auto
 
 balooctl suspend
 balooctl disable
-
-sudo systemctl stop systemd-rfkill systemd-resolved.service
-sudo systemctl disable systemd-rfkill systemd-resolved.service
-sudo systemctl mask systemd-rfkill.service systemd-rfkill.service
-sudo systemctl enable ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth
-sudo systemctl start ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth
-sudo btmgmt ssp of
 
 yay --noconfirm -Yc
 

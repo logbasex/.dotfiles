@@ -71,9 +71,6 @@
      path: /home/ak/.dotfiles/archlinux/etc/sysctl.d/network.conf
    /home/ak/scripts/kbd_idle:
      path: /home/ak/.dotfiles/archlinux/scripts/kbd_idle
-   /etc/nsswitch.conf:
-     path: /home/ak/.dotfiles/archlinux/etc/nsswitch.conf
-     force: true
    /etc/NetworkManager/conf.d/dns.conf:
      path: /home/ak/.dotfiles/archlinux/etc/NetworkManager/conf.d/dns.conf
 
@@ -85,6 +82,7 @@
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-login /etc/pam.d/system-login
   - cp /home/ak/.dotfiles/archlinux/bluetooth-fix /lib/systemd/system-sleep/bluetooth
   - cp /home/ak/.dotfiles/archlinux/etc/usbguard/rules.conf /etc/usbguard/rules.conf
+  - cp /home/ak/.dotfiles/archlinux/etc/nsswitch.conf /etc/nsswitch.conf
   - cp /home/ak/.dotfiles/archlinux/etc/dnscrypt-proxy.toml /etc/dnscrypt-proxy/dnscrypt-proxy.toml
   - rm -rf /home/ak/.yubico
   - rm -rf /root/.yubico
