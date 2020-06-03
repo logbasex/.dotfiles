@@ -35,6 +35,7 @@ acpi_call \
 alsa-utils \
 ananicy-git \
 ark \
+archlinuxcn-keyring \
 aspell-da \
 aspell-en \
 binutils \
@@ -108,7 +109,9 @@ powertop \
 print-manager \
 pulseaudio \
 pulseaudio-alsa \
-pulseaudio-bluetooth \
+pulseaudio-modules-bt \
+libavcodec.so \
+libldac \
 python \
 python-gpgme \
 python-pip \

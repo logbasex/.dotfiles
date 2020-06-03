@@ -73,8 +73,8 @@
      path: /home/ak/.dotfiles/archlinux/scripts/kbd_idle
    /etc/NetworkManager/conf.d/dns.conf:
      path: /home/ak/.dotfiles/archlinux/etc/NetworkManager/conf.d/dns.conf
-   /usr/bin/wrongpass.sh:
-     path: /home/ak/.dotfiles/archlinux/scripts/wrongpass.sh
+   /etc/modules-load.d/uinput.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/modules-load.d/uinput.conf
 
 - shell:
   - systemctl enable kill-wan.service
