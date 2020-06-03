@@ -11,7 +11,7 @@
 #account    required     pam_exec.so debug /path/to/wrongpassword.sh
 #
 
-COUNTFILE="/var/log/failed_login_count"
+COUNTFILE=~/.failed_login_count
 
 # Make sure file exists
 if [ ! -f "${COUNTFILE}" ];then
@@ -25,20 +25,15 @@ COUNT=$((COUNT+1))
 echo "${COUNT}" > "${COUNTFILE}"
 
 # if authentication
-if [ "${PAM_TYPE}" == "auth" ]; then
-  # The count will be at 4 after 3 wrong tries
-  if [ "${COUNT}" -ge 4 ]; then
-    # Shutdown in 1 min
-    #/usr/bin/shutdown --no-wall -h +1
-    # This is a hack because the line above gives a segfault in logind
-    echo "0" > "${COUNTFILE}"
-    /usr/bin/systemctl poweroff
-  fi
-# If authentication succeeded, and we are now in account phase
-elif [ "${PAM_TYPE}" == "account" ]; then
+if [ -n "$1" ] && [ "$1" == "success" ]; then
   echo "0" > "${COUNTFILE}"
-  # Cancel shutdown which was just issued
-  /usr/bin/shutdown -c
+  COUNT=0
+fi
+
+# The count will be at 4 after 3 wrong tries
+if [ "$PAM_TYPE" == "auth" ] && [ "${COUNT}" -ge 5 ]; then
+  echo "0" > "${COUNTFILE}"
+  /usr/bin/systemctl poweroff
 fi
 
 exit 0

@@ -81,6 +81,7 @@ kscreen \
 kubectl \
 kubectx \
 kwalletmanager \
+kwallet-pam \
 lastpass-cli \
 latte-dock \
 libinput \

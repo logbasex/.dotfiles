@@ -1,8 +1,9 @@
 #%PAM-1.0
 
-auth      optional  pam_exec.so     debug /usr/bin/wrongpass.sh 
-auth      required  pam_unix.so     try_first_pass nullok
+auth      optional  pam_exec.so     /usr/bin/wrongpass.sh
 auth      required  pam_yubico.so   mode=challenge-response
+auth      requisite  pam_unix.so     try_first_pass nullok
+auth      optional  pam_exec.so     /usr/bin/wrongpass.sh success
 auth      optional  pam_permit.so
 auth      required  pam_env.so
 
@@ -15,4 +16,5 @@ password  optional  pam_permit.so
 
 session   required  pam_limits.so
 session   required  pam_unix.so
+session   optional  pam_exec.so     /usr/bin/wrongpass.sh ok
 session   optional  pam_permit.so
