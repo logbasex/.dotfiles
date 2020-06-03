@@ -6,6 +6,7 @@ auth       optional   pam_faildelay.so     delay=4000000
 auth       requisite  pam_nologin.so
 auth       include    system-auth
 
+account    required   pam_exec.so          debug /usr/bin/wrongpass.sh
 account    required   pam_tally2.so
 account    required   pam_access.so
 account    required   pam_nologin.so
