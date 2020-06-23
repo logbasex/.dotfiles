@@ -51,6 +51,8 @@
      path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/nobeep.conf
    /etc/modprobe.d/i915.conf:
      path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/i915.conf
+   /etc/modprobe.d/sof.conf:
+     path: /home/ak/.dotfiles/archlinux/etc/modprobe.d/sof.conf
    /etc/pulse/default.pa:
      path: /home/ak/.dotfiles/archlinux/etc/pulse/default.pa
      force: true
@@ -77,6 +79,8 @@
      path: /home/ak/.dotfiles/archlinux/etc/modules-load.d/uinput.conf
    /usr/bin/wrongpass.sh:
      path: /home/ak/.dotfiles/archlinux/scripts/wrongpass.sh
+   /etc/udev/rules.d/99-thinkpad.rules:
+     path: /home/ak/.dotfiles/archlinux/etc/udev/rules.d/99-thinkpad.rules
 
 - shell:
   - systemctl enable kill-wan.service

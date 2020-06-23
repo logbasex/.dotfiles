@@ -14,25 +14,30 @@
 COUNTFILE=~/.failed_login_count
 
 # Make sure file exists
-if [ ! -f "${COUNTFILE}" ];then
+if [[ ! -f "${COUNTFILE}" ]];then
   touch "${COUNTFILE}"
 fi
 
 # Read value in it
 COUNT=$(cat "${COUNTFILE}")
-# Increment it
-COUNT=$((COUNT+1))
-echo "${COUNT}" > "${COUNTFILE}"
 
-# if authentication
-if [ -n "$1" ] && [ "$1" == "success" ]; then
-  echo "0" > "${COUNTFILE}"
+if [[ "$COUNT" -ge "0" ]]; then
+  # Increment it
+  COUNT=$((COUNT+1))
+else
   COUNT=0
 fi
 
+# if authentication
+if [[ -n "$1" ]] && [[ "$1" == "success" ]]; then
+  COUNT=0
+fi
+
+echo "${COUNT}" > "${COUNTFILE}"
+
 # The count will be at 4 after 3 wrong tries
-if [ "$PAM_TYPE" == "auth" ] && [ "${COUNT}" -ge 5 ]; then
-  echo "0" > "${COUNTFILE}"
+if [[ "$PAM_TYPE" == "auth" ]] && [[ "${COUNT}" -ge "10" ]]; then
+  echo 0 > "${COUNTFILE}"
   /usr/bin/systemctl poweroff
 fi
 

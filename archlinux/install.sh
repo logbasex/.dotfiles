@@ -69,6 +69,7 @@ git \
 git-crypt \
 grc-solarized \
 gufw \
+gnome-keyring \
 hunspell \
 hunspell-da \
 k9s \
@@ -84,11 +85,13 @@ kwalletmanager \
 kwallet-pam \
 lastpass-cli \
 latte-dock \
+libsecret \
 libinput \
 libva-intel-driver \
 libva-utils \
 libu2f-host \
 lm_sensors \
+mailspring \
 mobile-broadband-provider-info \
 modemmanager \
 neofetch \
@@ -169,7 +172,7 @@ ttf-camingocode \
 pyenv \
 pyenv-virtualenv
 
-sudo pip install dotbot ansible ipaddr pip-review pyroute2
+sudo pip install dotbot ansible ipaddr pip-review pyroute2 wheel
 sudo pip install --user ConfigArgParse
 sudo dotbot -c /home/ak/.dotfiles/archlinux/install.conf.yaml
 
