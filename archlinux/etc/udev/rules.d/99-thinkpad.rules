@@ -2,20 +2,20 @@
 SUBSYSTEM=="power_supply", ACTION=="change", \
 ENV{POWER_SUPPLY_ONLINE}=="0", ENV{POWER}="off", \
 OPTIONS+="last_rule", \
-RUN+="/bin/su $env{XUSER} -c '/usr/bin/echo 14642 > /sys/class/backlight/intel_backlight/brightness'"
+RUN+="/bin/su $env{XUSER} -c 'echo 2 > /sys/class/leds/tpacpi\:\:kbd_backlight/brightness'"
 
 SUBSYSTEM=="power_supply", ACTION=="change", \
 ENV{POWER_SUPPLY_ONLINE}=="0", ENV{POWER}="off", \
 OPTIONS+="last_rule", \
-RUN+="/bin/su $env{XUSER} -c '/usr/bin/echo 0 > /sys/class/leds/tpacpi::kbd_backlight/brightness'"
+RUN+="/bin/su $env{XUSER} -c 'echo 1b > /sys/class/leds/tpacpi\:\:kbd_backlight/brightness'"
 
 ### Charger plugged ###
 SUBSYSTEM=="power_supply", ACTION=="change", \
 ENV{POWER_SUPPLY_ONLINE}=="1", ENV{POWER}="on", \
 OPTIONS+="last_rule", \
-RUN+="/bin/su $env{XUSER} -c '/usr/bin/echo 24242 > /sys/class/backlight/intel_backlight/brightness'"
+RUN+="/bin/su $env{XUSER} -c 'echo 2 > /sys/class/leds/tpacpi\:\:kbd_backlight/brightness'"
 
 SUBSYSTEM=="power_supply", ACTION=="change", \
 ENV{POWER_SUPPLY_ONLINE}=="1", ENV{POWER}="on", \
 OPTIONS+="last_rule", \
-RUN+="/bin/su $env{XUSER} -c '/usr/bin/echo 1 > /sys/class/leds/tpacpi::kbd_backlight/brightness'"
+RUN+="/bin/su $env{XUSER} -c 'echo 1 > /sys/class/leds/tpacpi\:\:kbd_backlight/brightness'"

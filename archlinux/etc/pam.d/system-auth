@@ -16,5 +16,4 @@ password  optional  pam_permit.so
 
 session   required  pam_limits.so
 session   required  pam_unix.so
-session   optional  pam_exec.so     /usr/bin/wrongpass.sh ok
 session   optional  pam_permit.so

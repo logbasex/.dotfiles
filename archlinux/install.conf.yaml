@@ -20,8 +20,6 @@
      path: /home/ak/.dotfiles/archlinux/systemd/system/kill-wan.service
    /etc/systemd/system/reflector.service:
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.service
-   /etc/systemd/system/kbd_idle.service:
-     path: /home/ak/.dotfiles/archlinux/systemd/system/kbd_idle.service
    /etc/systemd/system/reflector.timer:
      path: /home/ak/.dotfiles/archlinux/systemd/system/reflector.timer
    /etc/docker/daemon.json:
@@ -71,8 +69,6 @@
      path: /home/ak/.dotfiles/archlinux/etc/X11/xorg.conf.d/90-monitor.conf
    /etc/sysctl.d/network.conf:
      path: /home/ak/.dotfiles/archlinux/etc/sysctl.d/network.conf
-   /home/ak/scripts/kbd_idle:
-     path: /home/ak/.dotfiles/archlinux/scripts/kbd_idle
    /etc/NetworkManager/conf.d/dns.conf:
      path: /home/ak/.dotfiles/archlinux/etc/NetworkManager/conf.d/dns.conf
    /etc/modules-load.d/uinput.conf:
@@ -84,7 +80,6 @@
 
 - shell:
   - systemctl enable kill-wan.service
-  # - systemctl enable kbd_idle.service
   - systemctl restart NetworkManager
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-auth /etc/pam.d/system-auth
   - cp /home/ak/.dotfiles/archlinux/etc/pam.d/system-login /etc/pam.d/system-login
@@ -105,5 +100,6 @@
   - chmod 0644 /etc/pam.d/system-auth
   - chmod 700 /home/ak/.gnupg
   - chmod 600 /home/ak/.gnupg/*
+  - chmod 755 /home/ak/.gnupg/crls.d
   - chmod +x /lib/systemd/system-sleep/bluetooth
   - systemctl daemon-reload

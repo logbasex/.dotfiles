@@ -22,3 +22,5 @@
 	program = gpg
 [alias]
 	unadd = reset HEAD
+[pull]
+	rebase = false

@@ -4,8 +4,13 @@ cd ~ || exit
 if [ ! -d yay ]; then
     git clone https://aur.archlinux.org/yay.git
     cd yay || exit
-    makepkg -si
+    makepkg -fsi --noconfirm
     cd ~ || exit
+else
+   cd yay || exit
+   git pull
+   makepkg -fsi --noconfirm
+   cd ~ || exit
 fi
 
 if [ ! -d kwin-quick-tile-2 ]; then
@@ -29,8 +34,7 @@ if [ ! -f /usr/local/bin/dropbox.py ]; then
   sudo chmod +x /usr/local/bin/dropbox.py
 fi
 
-yay -Syu --needed --noconfirm --nodiffmenu --batchinstall \
-acpid \
+for x in acpid \
 acpi_call \
 alsa-utils \
 ananicy-git \
@@ -41,14 +45,13 @@ aspell-en \
 binutils \
 bluedevil \
 bluez \
-bluez \
 bluez-libs \
-bluez-utils \
 bluez-utils \
 brightnessctl \
 bzip2 \
 chromium-vaapi \
 chromium-widevine \
+croc \
 cryfs \
 cups \
 dmenu \
@@ -71,13 +74,12 @@ grc-solarized \
 gufw \
 gnome-keyring \
 hunspell \
-hunspell-da \
-k9s \
+inetutils \
 khotkeys \
+k9s \
 kinfocenter \
 kio-gdrive \
 konsole \
-korganizer \
 kscreen \
 kubectl \
 kubectx \
@@ -111,9 +113,7 @@ powerdevil \
 powerline-fonts \
 powertop \
 print-manager \
-pulseaudio \
-pulseaudio-alsa \
-pulseaudio-modules-bt \
+pulseaudio-git \
 libavcodec.so \
 libldac \
 python \
@@ -170,34 +170,56 @@ zsh \
 awesome-terminal-fonts \
 ttf-camingocode \
 pyenv \
-pyenv-virtualenv
+pyenv-virtualenv \
+; do
+yay -Syu --needed --noconfirm --nodiffmenu --batchinstall $x
+done
 
-sudo pip install dotbot ansible ipaddr pip-review pyroute2 wheel
-sudo pip install --user ConfigArgParse
-sudo dotbot -c /home/ak/.dotfiles/archlinux/install.conf.yaml
+sudo pacman -S pulseaudio-alsa --assume-installed pulseaudio
+systemctl --user enable pulseaudio
 
 if [ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+else
+  cd "${ZDOTDIR:-$HOME}/.zprezto" || exit
+  git pull
+  git submodule update --init --recursive
+  cd ~ || exit
 fi
+
+sudo pip install dotbot ansible ipaddr pip-review pyroute2 wheel
+sudo pip install --user ConfigArgParse
+sudo pip-review --local --auto
+sudo dotbot -c /home/ak/.dotfiles/archlinux/install.conf.yaml
 
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
   chsh -s /usr/bin/zsh
 fi
 
-sudo systemctl stop systemd-rfkill systemd-resolved.service
-sudo systemctl disable systemd-rfkill systemd-resolved.service
-sudo systemctl mask systemd-rfkill.service systemd-rfkill.service
-sudo systemctl enable ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth acpid
-sudo systemctl start ananicy ufw tlp dnscrypt-proxy dnsmasq thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth acpid
+for x in systemd-rfkill.service systemd-rfkill.service kbd_idle.service; do
+  sudo systemctl stop $x
+  sudo systemctl disable $x
+  sudo systemctl mask $x
+done
+
+for x in ananicy ufw tlp thermald docker usbguard org.cups.cupsd.service avahi-daemon.service bluetooth acpid; do
+  sudo systemctl enable $x
+  sudo systemctl start $x
+done
 
 #sudo btmgmt ssp of
-sudo pip-review --local
 sudo sensors-detect --auto
+sudo udevadm control --reload-rules
 
 balooctl suspend
 balooctl disable
 
 yay --noconfirm -Yc
+
+for x in dnscrypt-proxy dnsmasq; do
+  sudo systemctl enable $x
+  sudo systemctl start $x
+done
 
 #if [ ! -d cryptboot ]; then
 #    git clone https://github.com/xmikos/cryptboot.git
